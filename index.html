@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href= "css/style.css" />
+<script src="js/main.js"></script>
+</head>
+
+<body>
+<h1>Simple Search</h1>
+
+<div class="box">
+	<form>
+		<label for="com_name" class="search">Company Name:</label>
+		<input type="text" name="com_name"  id="com_name" maxlength="15" class="search_test" />
+		<span class="error" id="error1"></span><br /><br />
+		
+		<label for="fou_year" class="search">Founded Year:</label>
+		<input type="number" name="fou_year" id="fou_year" min="1970" max="2018" class="search_test"/>
+		<span class="error" id="error2"></span><br /><br />
+
+		<label for="fou_name" class="search">Founder Name:</label>
+		<input type="text" name="fou_name" id="fou_name" maxlength="15" class="search_test" />
+		<span class="error" id="error3"></span><br /><br />
+	</form>	
+</div>
+<br />
+<div class="buts_div">
+	<button type="button" class="but" onclick="search_handler()">Search</button>
+	<button type="button" class="but" onclick="clear_handler()">Clear</button>
+</div>
+<br />
+<hr  width="80%"/>
+</body>
+</html>
