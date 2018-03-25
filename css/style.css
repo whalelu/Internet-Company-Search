@@ -1,8 +1,8 @@
 body {
-	position: fixed;		
+	position:absolute;		
 	width:100%;
 	height:100%;
-	background-size:100%;
+	background-size:130%;
 	background-image: url(../images/background.png);
 }
 
@@ -41,4 +41,38 @@ h1{
 	color: red;
 	font-size: 12px;
 	opacity: 1;
+}
+
+.underline{
+	width: 85%;
+}
+
+table{
+	margin: 0 auto;
+	visibility: hidden;
+	width: 85%;
+	border: 1px solid black;
+}
+
+th{
+	height: 30px;
+	border: 1px solid black;
+	background: rgba(29,240,187,0.8);
+}
+
+td{
+	border:1px solid black;
+}
+
+tr:nth-child(odd){
+	background: rgba(140,237,66,0.6);
+}
+
+tr:nth-child(even){
+	background: rgba(78,147,217,0.7);
+}
+
+#imgs{
+	width: 40px;
+	height: 40px;
 }

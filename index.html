@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<meta charset="utf-8">
+<title>Simple Search</title>
 <link rel="stylesheet" type="text/css" href= "css/style.css" />
-<script src="js/main.js"></script>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
 
 		<label for="fou_name" class="search">Founder Name:</label>
 		<input type="text" name="fou_name" id="fou_name" maxlength="15" class="search_test" />
-		<span class="error" id="error3"></span><br /><br />
+		<span class="error" id="error3"></span><br />
 	</form>	
 </div>
 <br />
@@ -28,7 +29,11 @@
 	<button type="button" class="but" onclick="search_handler()">Search</button>
 	<button type="button" class="but" onclick="clear_handler()">Clear</button>
 </div>
+
+<hr  class="underline" />
 <br />
-<hr  width="80%"/>
+<table class="result" id="result">
+</table>
+<script src="js/main.js"></script>
 </body>
 </html>
