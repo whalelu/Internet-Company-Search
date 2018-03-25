@@ -17,7 +17,7 @@ function validation()//to judge whether the search criteria is correct
 
 	var reg1 = /^[0-9a-zA-Z]+$/;//letters and digits
 	var reg2 = /^[0-9]+$/;//years
-	var reg3 = /^[a-zA-Z]+$/;//letters
+	var reg3 = /^(?!_)([A-Za-z ]+)$/;//letters
 	if(!reg1.test(a) && a!="")
 	{
 		document.getElementById("error1").innerHTML="Only letters and digits";//error
