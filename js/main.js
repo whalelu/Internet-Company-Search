@@ -1,5 +1,7 @@
 //global variable
 var companies=new Array();//transform json source into an array
+var searchButton = document.getElementById("button1");
+var clearButton = document.getElementById("button2");
 
 function validation()//to judge whether the search criteria is correct
 {
@@ -47,28 +49,6 @@ function titleInit()//set table title
 	document.getElementById("result").appendChild(tr);  
 }
 
-
-function loadXMLDoc(url, company_name , founded_year, founder_name)
-{
-	var xmlhttp;
-	if (window.XMLHttpRequest)
-	{// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp=new XMLHttpRequest();
-	}
-	else
-	{// code for IE6, IE5
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.onreadystatechange=function(){
-		if (xmlhttp.readyState==4 && xmlhttp.status==200)
-		{
-			companies = JSON.parse(xmlhttp.responseText);
-		}
-	}
-	xmlhttp.open("GET", url, true);
-	xmlhttp.send();
-}
-
 function QuickSort(array_unordered, left, right)
 {
 	if(left>=right)
@@ -93,7 +73,7 @@ function QuickSort(array_unordered, left, right)
 	QuickSort(array_unordered, i+1, right);
 }
 
-function print_array(company)
+function printArray(company)
 {
 	var right = company.length;
 	QuickSort(company, 0, right-1);//sort by name
@@ -142,7 +122,7 @@ function searchResult(company_name, founded_year, founder_name)//serach the resu
 	{
 		resultArray=companies;
 		titleInit();
-		print_array(resultArray);
+		printArray(resultArray);
 		return;
 	}
 	
@@ -164,14 +144,37 @@ function searchResult(company_name, founded_year, founder_name)//serach the resu
 		}
 	}
 	titleInit();
-	print_array(resultArray);
+	printArray(resultArray);
 	return;
 }
 
-function search_handler()
+function loadXMLDoc(url, company_name , founded_year, founder_name)
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			companies = JSON.parse(xmlhttp.responseText);
+			searchResult(company_name, founded_year, founder_name);
+			document.getElementById("result").style.visibility="visible";
+
+		}
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+}
+
+searchButton.onclick = function()
 {
 	var Is_valid=validation();
-
 	//clear
 	document.getElementById("result").innerHTML = "";
 	document.getElementById("result").style.visibility = "hidden";
@@ -183,12 +186,10 @@ function search_handler()
 		var founder_name=document.getElementById("fou_name").value;
 	
 		loadXMLDoc("data/companies.json", company_name , founded_year, founder_name);
-		searchResult(company_name, founded_year, founder_name);
-		document.getElementById("result").style.visibility="visible";
 	}
 }
 
-function clear_handler()
+clearButton.onclick = function()
 {
 	//clear the red
 	document.getElementById("error1").innerHTML="";
